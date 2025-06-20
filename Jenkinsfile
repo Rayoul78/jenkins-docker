@@ -1,13 +1,13 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('karim-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('rgr-dockerhub')
     }
     stages { 
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t karimsahebettaba/flask:$BUILD_NUMBER .'
+                sh 'docker build -t rgranchamp/flask:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -17,7 +17,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push karimsahebettaba/flask:$BUILD_NUMBER'
+                sh 'docker push rgranchamp/flask:$BUILD_NUMBER'
             }
         }
 }
